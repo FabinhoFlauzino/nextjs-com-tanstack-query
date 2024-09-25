@@ -6,8 +6,8 @@ export const req = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
 })
 
-export const getPosts = async (): Promise<Post[]> => {
-  const result = await req.get('/posts')
+export const getPosts = async (limit: number = 10, start: number = 0): Promise<Post[]> => {
+  const result = await req.get(`/posts?_limit=${limit}&_start=${start}`)
   return result.data
 }
 
